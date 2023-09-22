@@ -14,13 +14,27 @@
     "start:debug": "nodemon --inspect-brk=0.0.0.0 --ext js --legacy-watch app/index.js"
   },
   "author": "Defra",
-  "contributors": [],
+  "contributors": [
+    "John Watson john.watson1@defra.gov.uk"
+  ],
   "license": "OGL-UK-3.0",
   "dependencies": {
-    "@hapi/hapi": "21.3.2",
-    "applicationinsights": "2.7.3"
+    "@azure/identity": "3.3.0",
+    "@azure/storage-blob": "12.16.0",
+    "@hapi/wreck": "18.0.1",
+    "applicationinsights": "2.7.3",
+    "ffc-messaging": "2.7.0",
+    "hapi-pino": "12.1.0",
+    "joi": "17.10.2",
+    "json-rules-engine": "6.4.2",
+    "log-timestamp": "0.3.0",
+    "pg": "8.11.3",
+    "pg-hstore": "2.3.4",
+    "redis": "4.6.10",
+    "sequelize": "6.33.0"
   },
   "devDependencies": {
+    "@hapi/catbox-memory": "6.0.1",
     "jest": "29.7.0",
     "jest-junit": "16.0.0",
     "nodemon": "3.0.1",
