@@ -27,7 +27,7 @@ services:
       - ffc-tcg-rules-engine-redis
       - ffc-tcg-rules-engine-azurite
 
-  ffc-rules-engine-postgres:
+  ffc-tcg-rules-engine-postgres:
     image: postgres:11.4-alpine
     environment:
       POSTGRES_DB: ffc_tcg_rules_engine
