@@ -2,14 +2,14 @@
 # to provide dependencies and expose ports for local testing
 
 services:
-  ffc-template-node:
+  ffc-tcg-rules-engine:
     build:
       target: development
-    image: ffc-template-node-development
-    container_name: ffc-template-node-development
+    image: ffc-tcg-rules-engine-development
+    container_name: ffc-tcg-rules-engine-development
     ports:
-      - "3000:3000"
-      - "9229:9229"
+      - "3002:3000"
+      - "9209:9229"
     volumes:
       - ./app:/home/node/app
       - ./package.json:/home/node/package.json

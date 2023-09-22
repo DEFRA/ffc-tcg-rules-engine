@@ -1,5 +1,5 @@
 services:
-  ffc-template-node:
+  ffc-tcg-rules-engine:
     command: >
       sh -c "npm run test:watch"
     volumes:

@@ -1,10 +1,10 @@
 services:
-  ffc-template-node:
+  ffc-tcg-rules-engine:
     build:
       context: .
       target: production
-    image: ffc-template-node
-    container_name: ffc-template-node
+    image: ffc-tcg-rules-engine
+    container_name: ffc-tcg-rules-engine
     environment:
-      APPINSIGHTS_CLOUDROLE: ffc-template-node-local
+      APPINSIGHTS_CLOUDROLE: ffc-tcg-rules-engine-local
       APPINSIGHTS_CONNECTIONSTRING: ${APPINSIGHTS_CONNECTIONSTRING}

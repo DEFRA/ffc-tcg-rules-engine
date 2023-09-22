@@ -1,9 +1,9 @@
 environment: production
 environmentCode:
-name: ffc-template-node
-namespace: ffc-demo
-workstream: ffc-demo
-image: ffc-template-node
+name: ffc-tcg-rules-engine
+namespace: ffc-tcg
+workstream: ffc-tcg
+image: ffc-tcg-rules-engine
 
 labels:
   component: service
@@ -12,10 +12,10 @@ appInsights:
   connectionString:
 
 containerConfigMap:
-  name: ffc-template-node-config-map
+  name: ffc-tcg-rules-engine-config-map
 
 containerSecret:
-  name: ffc-template-node-container-secret
+  name: ffc-tcg-rules-engine-container-secret
   type: Opaque
 
 deployment: {}
