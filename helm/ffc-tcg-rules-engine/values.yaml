@@ -27,6 +27,9 @@ container:
   limitCpu: 200m
   port: 3002
   messageQueueHost: namespace.servicebus.windows.net
+  dataTopicAddress: ffc-tcg-rules-engine
+  dataSubscriptionAddress: ffc-tcg-rules-engine
+  responseQueue: ffc-tcg-rules-engine-response
   redisHostname: redis-redis-ha.default
   redisPassword: redis
   redisPort: 6379
@@ -34,6 +37,7 @@ container:
   azureStorageAccountName: sfiland
   azureStorageConnectionString: dummy
   azureStorageUseConnectionString: false
+  azureStorageContainer: data
 
 postgresService:
   postgresDb: ffc_tcg_rules_engine

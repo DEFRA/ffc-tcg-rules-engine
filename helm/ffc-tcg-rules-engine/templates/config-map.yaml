@@ -5,6 +5,14 @@ data:
   PORT: {{ quote .Values.container.port }}
   APPINSIGHTS_CLOUDROLE: {{ quote .Values.name }}
   MESSAGE_QUEUE_HOST: {{ quote .Values.container.messageQueueHost }}
+  {{- if and (.Values.environmentCode) (not .Values.pr) }}
+  DATA_TOPIC_ADDRESS: {{ .Values.container.dataTopicAddress }}-{{ .Values.environmentCode }}
+  RESPONSE_QUEUE_ADDRESS: {{ .Values.container.responseQueueAddress }}-{{ .Values.environmentCode }}
+  {{ else }}
+  DATA_TOPIC_ADDRESS: {{ quote .Values.container.dataTopicAddress }}
+  RESPONSE_QUEUE_ADDRESS: {{ quote .Values.container.responseQueueAddress }}
+  {{- end }}
+  DATA_SUBSCRIPTION_ADDRESS: {{ quote .Values.container.dataSubscriptionAddress }}
   {{- if .Values.container.redisHostname }}
   REDIS_HOSTNAME: {{ quote .Values.container.redisHostname }}
   {{- end }}
@@ -21,4 +29,5 @@ data:
   AZURE_STORAGE_ACCOUNT_NAME: {{ quote .Values.container.azureStorageAccountName }}
   AZURE_STORAGE_CONNECTION_STRING: {{ quote .Values.container.azureStorageConnectionString }}
   AZURE_STORAGE_USE_CONNECTION_STRING: {{ quote .Values.container.azureStorageUseConnectionString }}
+  AZURE_STORAGE_CONTAINER: {{ quote .Values.container.azureStorageContainer }}
 {{- end -}}

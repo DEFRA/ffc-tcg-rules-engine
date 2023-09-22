@@ -1,0 +1,6 @@
+resources:
+  topics:
+    - name: data
+  queues:
+    - name: response
+      enableSessions: true
