@@ -1,0 +1,5 @@
+{{- if .Values.aadPodIdentity }}
+{{- include "ffc-helm-library.azure-identity" (list . "ffc-tcg-rules-engine.azure-identity") -}}
+{{- end }}
+{{- define "ffc-tcg-rules-engine.azure-identity" -}}
+{{- end -}}

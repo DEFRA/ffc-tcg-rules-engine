@@ -8,8 +8,31 @@ services:
     image: ffc-tcg-rules-engine-development
     container_name: ffc-tcg-rules-engine-development
     ports:
-      - "3002:3000"
+      - "3002:3002"
       - "9209:9229"
     volumes:
       - ./app:/home/node/app
       - ./package.json:/home/node/package.json
+
+  ffc-tcg-rules-engine-postgres:
+    ports:
+      - "5232:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  ffc-tcg-rules-engine-redis:
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6279:6379"
+
+  ffc-tcg-rules-engine-azurite:
+    volumes:
+      - azurite_data:/data
+    ports:
+      - "12000:10000"
+
+volumes:
+  redis_data:
+  postgres_data:
+  azurite_data:

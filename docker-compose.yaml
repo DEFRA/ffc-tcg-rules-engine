@@ -8,3 +8,35 @@ services:
     environment:
       APPINSIGHTS_CLOUDROLE: ffc-tcg-rules-engine-local
       APPINSIGHTS_CONNECTIONSTRING: ${APPINSIGHTS_CONNECTIONSTRING}
+      MESSAGE_QUEUE_HOST: ${MESSAGE_QUEUE_HOST}
+      MESSAGE_QUEUE_PASSWORD: ${MESSAGE_QUEUE_PASSWORD}
+      MESSAGE_QUEUE_USER: ${MESSAGE_QUEUE_USER}
+      POSTGRES_DB: ffc_tcg_rules_engine
+      POSTGRES_HOST: ${POSTGRES_HOST:-ffc-tcg-rules-engine-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_SCHEMA_PASSWORD:-ppp}
+      POSTGRES_PORT: 5432
+      POSTGRES_SCHEMA_NAME: ${POSTGRES_SCHEMA_NAME:-public}
+      POSTGRES_USERNAME: ${POSTGRES_SCHEMA_USERNAME:-postgres}
+      REDIS_HOSTNAME: ffc-tcg-rules-engine-redis
+      REDIS_TTL: 30000
+      AZURE_STORAGE_ACCOUNT_NAME: ${AZURE_STORAGE_ACCOUNT_NAME:-devstoreaccount1}
+      AZURE_STORAGE_USE_CONNECTION_STRING: "true"
+      AZURE_STORAGE_CONNECTION_STRING: DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://ffc-tcg-rules-engine-azurite:10000/devstoreaccount1;
+    depends_on:
+      - ffc-tcg-rules-engine-postgres
+      - ffc-tcg-rules-engine-redis
+      - ffc-tcg-rules-engine-azurite
+
+  ffc-rules-engine-postgres:
+    image: postgres:11.4-alpine
+    environment:
+      POSTGRES_DB: ffc_tcg_rules_engine
+      POSTGRES_PASSWORD: ppp
+      POSTGRES_USERNAME: postgres
+
+  ffc-tcg-rules-engine-redis:
+    image: redis:4.0.14
+    
+  ffc-tcg-rules-engine-azurite:
+    image: mcr.microsoft.com/azure-storage/azurite
+    command: "azurite-blob --loose --blobHost 0.0.0.0"

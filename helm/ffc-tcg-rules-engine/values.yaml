@@ -21,15 +21,37 @@ containerSecret:
 deployment: {}
 
 container:
-  requestMemory: 100Mi
-  requestCpu: 100m
-  limitMemory: 100Mi
-  limitCpu: 100m
-  port: 3000
+  requestMemory: 120Mi
+  requestCpu: 40m
+  limitMemory: 600Mi
+  limitCpu: 200m
+  port: 3002
+  messageQueueHost: namespace.servicebus.windows.net
+  redisHostname: redis-redis-ha.default
+  redisPassword: redis
+  redisPort: 6379
+  redisPartition: ffc-tcg-rules-engine
+  azureStorageAccountName: sfiland
+  azureStorageConnectionString: dummy
+  azureStorageUseConnectionString: false
+
+postgresService:
+  postgresDb: ffc_tcg_rules_engine
+  postgresExternalName:
+  postgresHost: ffc-tcg-rules-engine-postgresql.default
+  postgresPort: 5432
+  postgresSchema: public
+  postgresUser: postgres
+
+aadPodIdentity: true
+
+azureIdentity:
+  clientID: not-a-real-clientID
+  resourceID: not-a-real-resourceID
 
 livenessProbe:
   path: /healthz
-  port: 3000
+  port: 3002
   initialDelaySeconds: 20
   periodSeconds: 10
   failureThreshold: 3
@@ -37,7 +59,7 @@ livenessProbe:
 
 readinessProbe:
   path: /healthy
-  port: 3000
+  port: 3002
   initialDelaySeconds: 30
   periodSeconds: 10
   failureThreshold: 3
