@@ -23,7 +23,7 @@
   "license": "OGL-UK-3.0",
   "dependencies": {
     "@azure/identity": "3.3.0",
-    "@azure/storage-blob": "12.16.0",
+    "@azure/storage-blob": "12.24.0",
     "@hapi/wreck": "18.0.1",
     "applicationinsights": "2.7.3",
     "blipp": "4.0.2",
